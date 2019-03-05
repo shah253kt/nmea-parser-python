@@ -41,14 +41,12 @@ class NmeaParser:
 					if calcChecksum == checksum:
 						return nmeaData[0].split(',')
 		except (AttributeError, serial.SerialException):
-			print("Error updating COM port")
-			# pass
+			pass
 
 	def send(self, str):
 		try:
 			message = str.encode('utf-8')
 			self.comPort.write(message)
-			print (message)
 		except (serial.SerialTimeoutException, serial.SerialException, AttributeError):
 			return False
 

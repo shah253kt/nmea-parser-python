@@ -11,6 +11,8 @@ if __name__ == '__main__':
 			
 			if data != None:
 				print (data)
+				parameters = ['OK']
+				com_port.send(create_nmea_sentence(parameters))
 		except KeyboardInterrupt:
 			com_port.close()
 			print("Program ends")

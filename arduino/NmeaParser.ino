@@ -17,13 +17,14 @@ void loop()
 
     if (parser.encode(c))
     {
+      parser.createStatement("");
+      
       for (byte i = 0; i < parser.getTermsCount(); i++)
       {
-        Serial.print(parser.getTerm(i));
-        Serial.print('\t');
+        parser.append(parser.getTerm(i));
       }
 
-      Serial.println();
+      Serial.print(parser.getStatement());
     }
   }
 

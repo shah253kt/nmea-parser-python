@@ -11,10 +11,10 @@ def coordinate_to_degrees(coor):
 
 		return '%.6f' % (degree + (minute / 60))
 
-def calculate_checksum(str):
+def calculate_checksum(sentence):
 	checksum = 0
 
-	for c in str:
+	for c in sentence:
 		checksum ^= ord(c)
 
 	return checksum
@@ -27,9 +27,9 @@ def int_to_hex_string(value):
 		
 	return s
 
-def complete_nmea_sentence(str):
-	checksum = int_to_hex_string(calculate_checksum(str))
-	return '$' + str + '*' + checksum + '\n\r'
+def complete_nmea_sentence(sentence):
+	checksum = int_to_hex_string(calculate_checksum(sentence))
+	return '$' + sentence + '*' + checksum + '\n\r'
 
 def create_nmea_sentence(nmeaParam):
 	return complete_nmea_sentence(','.join(nmeaParam))
